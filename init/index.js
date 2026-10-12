@@ -18,6 +18,15 @@ async function main() {
 
 const initDB = async () => {
   await Listing.deleteMany({});
+  initData.data= initData.data.map((obj) =>({
+    ...obj,
+    category: "Trending",
+    owner:"6aba7357f4e963ab6d42c41f",
+    geometry: {
+      type: "Point",
+      coordinates: [77.2090, 28.6139] // Default coordinates (New Delhi)
+    }
+  }));
   await Listing.insertMany(initData.data);
   console.log("data was initialized");
 };
