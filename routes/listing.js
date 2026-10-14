@@ -25,6 +25,10 @@ router
 // // Index Route
 // router.get("/", wrapAsync(listingController.index));
 
+router.get("/doom", (req, res) => {
+  res.render("listings/doom.ejs");
+});
+
 //New Route
 router.get("/new", isLoggedIn,
   listingController.renderNewForm);
@@ -44,7 +48,9 @@ router.get(
 
 //Edit Route
 router.get(
-  "/:id/edit",isLoggedIn,isOwner,
+  "/:id/edit",
+  isLoggedIn,
+  wrapAsync(isOwner),
   wrapAsync(listingController.renderEditForm)
 );
 
@@ -52,7 +58,7 @@ router.get(
 router.put(
   "/:id",
   isLoggedIn,
-  isOwner,
+  wrapAsync(isOwner),
   upload.single("listing[image]"),
   validateListing,
   wrapAsync(listingController.updateListing)
@@ -60,8 +66,10 @@ router.put(
 
 
 //Delete Route
-router.delete("/:id",
-  isLoggedIn,isOwner,
+router.delete(
+  "/:id",
+  isLoggedIn,
+  wrapAsync(isOwner),
   wrapAsync(listingController.destroyListing)
 );
 

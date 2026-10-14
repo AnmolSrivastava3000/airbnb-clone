@@ -118,13 +118,27 @@ app.use((req,res,next)=>{
   next(new ExpressError(404,"page not found"));
 });
 
-app.use((err,req,res,next)=>{
-  let{statusCode=500,message="something went wrong"} = err;
-  // res.status(statusCode).send(message);
-  res.status(statusCode).render("error.ejs",{err});
 
+app.use((err, req, res, next) => {
+  console.error(err);
+
+  const statusCode = err.statusCode || 500;
+
+  let message;
+  if (statusCode === 404) {
+    message = "Page not found.";
+  } else if (statusCode === 400) {
+    message = "Invalid request.";
+  } else {
+    message = "Something went wrong. Please try again later.";
+  }
+
+  res.status(statusCode).render("error.ejs", {
+    err: { message, statusCode }
+  });
 });
 
-app.listen(8080, () => {
-  console.log("server is listening to port 8080");
+const PORT = process.env.PORT || 8080;
+app.listen(PORT, () => {
+  console.log(`server is listening to port ${PORT}`);
 });
