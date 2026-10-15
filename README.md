@@ -93,3 +93,111 @@ airbnb-clone/
 ├── schema.js             # Joi validation schemas
 ├── app.js                # Server entry point
 └── package.json
+
+```
+
+---
+
+## 🚀 Getting Started
+
+Follow these steps to set up and run the project locally.
+
+### Prerequisites
+
+* Node.js v16 or higher
+* MongoDB local instance or MongoDB Atlas account
+* Cloudinary and Mapbox accounts for API access
+
+### 1. Clone the repository
+
+```bash
+git clone [https://github.com/AnmolSrivastava3000/airbnb-clone.git](https://github.com/AnmolSrivastava3000/airbnb-clone.git)
+cd airbnb-clone
+
+```
+
+### 2. Install dependencies
+
+```bash
+npm install
+
+```
+
+### 3. Configure environment variables
+
+Create a `.env` file in the root directory:
+
+```env
+PORT=8080
+ATLASDB_URL=mongodb+srv://<username>:<password>@cluster0.mongodb.net/wanderlust?retryWrites=true&w=majority
+SECRET=your_jwt_or_session_secret_key
+
+# Cloudinary credentials
+CLOUD_NAME=your_cloudinary_cloud_name
+CLOUD_API_KEY=your_cloudinary_api_key
+CLOUD_API_SECRET=your_cloudinary_api_secret
+
+# Mapbox token
+MAP_TOKEN=your_mapbox_public_access_token
+
+```
+
+### 4. Optional: Seed sample data
+
+Populate your database with sample rental listings:
+
+```bash
+node init/index.js
+
+```
+
+### 5. Start the development server
+
+```bash
+# Using nodemon
+nodemon app.js
+
+# Or using standard node
+npm start
+
+```
+
+Open your browser and visit:
+
+```text
+http://localhost:8080/listings
+
+```
+
+---
+
+## 🔒 Environment Variables Reference
+
+| Variable | Description |
+| --- | --- |
+| `PORT` | Port number for Express server, defaults to 8080 |
+| `ATLASDB_URL` | MongoDB Atlas connection string |
+| `SECRET` | Session secret used for signing cookies |
+| `CLOUD_NAME` | Cloudinary cloud identifier |
+| `CLOUD_API_KEY` | Cloudinary public API key |
+| `CLOUD_API_SECRET` | Cloudinary private secret key |
+| `MAP_TOKEN` | Mapbox GL public access token |
+
+---
+
+## 👨‍💻 Author
+
+**Anmol Srivastava**
+
+* GitHub: [AnmolSrivastava3000](https://github.com/AnmolSrivastava3000)
+* LinkedIn: [Anmol Srivastava](https://www.linkedin.com/in/anmol-srivastava-9bb376239)
+
+---
+
+## 📄 License
+
+This project is open source and available under the [MIT License](https://www.google.com/search?q=LICENSE).
+
+```
+
+```
